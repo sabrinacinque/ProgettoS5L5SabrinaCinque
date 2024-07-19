@@ -108,7 +108,7 @@ VALUES
 
 
 --ho creato la tabella con due users per fare le autorizzazioni:
---il comandante vede tutto , il subordinato vede solo la pagina di report
+--senza login si vede solo la home e la pagina di login.Il comandante vede tutto , mentre il subordinato vede solo la pagina di report
 CREATE TABLE Users (
     Id INT PRIMARY KEY IDENTITY,
     Username NVARCHAR(100) NOT NULL,
