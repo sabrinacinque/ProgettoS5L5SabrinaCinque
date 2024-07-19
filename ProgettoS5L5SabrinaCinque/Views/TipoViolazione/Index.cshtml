@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ProgettoS5L5SabrinaCinque.Models.TipoViolazione>
+
+@{
+    ViewData["Title"] = "Tipo di Violazione";
+}
+
+<h1>Tipo di Violazione</h1>
+
+<a asp-action="Create" class="btn btn-primary">Aggiungi</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Descrizione</th>
+            <th>Importo</th>
+            <th>Decurtamento Punti</th>
+            <th>Azioni</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IdViolazione</td>
+                <td>@item.Descrizione</td>
+                <td>@item.Importo</td>
+                <td>@item.DecurtamentoPunti</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdViolazione" class="btn btn-primary">Modifica</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

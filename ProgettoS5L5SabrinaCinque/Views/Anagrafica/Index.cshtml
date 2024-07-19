@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ProgettoS5L5SabrinaCinque.Models.Anagrafica>
+
+@{
+    ViewData["Title"] = "Anagrafica";
+}
+
+<h1>Anagrafica</h1>
+
+<a asp-action="Create" class="btn btn-primary">Aggiungi</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Cognome</th>
+            <th>Nome</th>
+            <th>Indirizzo</th>
+            <th>Città</th>
+            <th>Cap</th>
+            <th>CodFisc</th>
+            <th>Azioni</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IdAnagrafica</td>
+                <td>@item.Cognome</td>
+                <td>@item.Nome</td>
+                <td>@item.Indirizzo</td>
+                <td>@item.Citta</td>
+                <td>@item.Cap</td>
+                <td>@item.Cod_Fisc</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdAnagrafica" class="btn btn-primary">Modifica</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

@@ -1,0 +1,145 @@
+﻿@model ProgettoS5L5SabrinaCinque.Models.ReportViewModel
+
+@{
+    ViewData["Title"] = "Report";
+}
+
+<h1>Report</h1>
+
+<!-- Sezione Totale verbali per trasgressore -->
+<h2>Totale verbali per trasgressore</h2>
+@if (Model.VerbaliByTrasgressore.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Cognome</th>
+                <th>Nome</th>
+                <th>Totale Verbali</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var report in Model.VerbaliByTrasgressore)
+            {
+                <tr>
+                    <td>@report.Cognome</td>
+                    <td>@report.Nome</td>
+                    <td>@report.TotaleVerbali</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nessun verbale trovato.</p>
+}
+
+<hr />
+
+<!-- Sezione Totale punti decurtati per trasgressore -->
+<h2>Totale punti decurtati per trasgressore</h2>
+@if (Model.PuntiDecurtatiByTrasgressore.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Cognome</th>
+                <th>Nome</th>
+                <th>Totale Punti</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var report in Model.PuntiDecurtatiByTrasgressore)
+            {
+                <tr>
+                    <td>@report.Cognome</td>
+                    <td>@report.Nome</td>
+                    <td>@report.DecurtamentoPunti</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nessun punto decurtato trovato.</p>
+}
+
+<hr />
+
+<!-- Sezione Violazioni con più di 10 punti -->
+<h2>Violazioni con più di 10 punti</h2>
+@if (Model.ViolazioniConPiuDiDieciPunti.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id Verbale</th>
+                <th>Importo</th>
+                <th>Descrizione</th>
+                <th>Cognome</th>
+                <th>Nome</th>
+                <th>Data Violazione</th>
+                <th>Decurtamento Punti</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var report in Model.ViolazioniConPiuDiDieciPunti)
+            {
+                <tr>
+                    <td>@report.IdVerbale</td>
+                    <td>@report.Importo.ToString("C")</td>
+                    <td>@report.Descrizione</td>
+                    <td>@report.Cognome</td>
+                    <td>@report.Nome</td>
+                    <td>@report.DataViolazione.ToString("dd/MM/yyyy")</td>
+                    <td>@report.DecurtamentoPunti</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nessuna violazione con più di 10 punti trovata.</p>
+}
+
+<hr />
+
+<!-- Sezione Violazioni con importo maggiore di 150 euro -->
+<h2>Violazioni con importo maggiore di 150 euro</h2>
+@if (Model.ViolazioniConImportoMaggioreDi150.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id Verbale</th>
+                <th>Decurtamento Punti</th>
+                <th>Descrizione</th>
+                <th>Cognome</th>
+                <th>Nome</th>
+                <th>Data Violazione</th>
+                <th>Importo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var report in Model.ViolazioniConImportoMaggioreDi150)
+            {
+                <tr>
+                    <td>@report.IdVerbale</td>
+                    <td>@report.DecurtamentoPunti</td>
+                    <td>@report.Descrizione</td>
+                    <td>@report.Cognome</td>
+                    <td>@report.Nome</td>
+                    <td>@report.DataViolazione.ToString("dd/MM/yyyy")</td>                  
+                    <td>@report.Importo.ToString("C")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Nessuna violazione con importo maggiore di 150 euro trovata.</p>
+}

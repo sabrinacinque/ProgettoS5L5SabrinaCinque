@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ProgettoS5L5SabrinaCinque.Models.Verbale>
+
+@{
+    ViewData["Title"] = "Verbali";
+}
+
+<h1>Verbali</h1>
+
+<a asp-action="Create" class="btn btn-primary">Aggiungi</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Data Violazione</th>
+            <th>Indirizzo Violazione</th>
+            <th>Nominativo Agente</th>
+            <th>Data Trascrizione</th>
+            <th>Id Anagrafica</th>
+            <th>Id Violazione</th>
+            <th>Azioni</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.IdVerbale</td>
+                <td>@item.DataViolazione.ToShortDateString()</td>
+                <td>@item.IndirizzoViolazione</td>
+                <td>@item.Nominativo_Agente</td>
+                <td>@item.DataTrascrizioneVerbale.ToShortDateString()</td>
+                <td>@item.IdAnagrafica</td>
+                <td>@item.IdViolazioneVerbale</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdVerbale" class="btn btn-primary">Modifica</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

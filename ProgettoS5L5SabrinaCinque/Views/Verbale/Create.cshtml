@@ -1,0 +1,49 @@
+﻿@model ProgettoS5L5SabrinaCinque.Models.Verbale
+
+@{
+    ViewData["Title"] = "Crea Verbale";
+}
+
+<h1>Crea Verbale</h1>
+
+<h4>Verbale</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div class="form-group">
+                <label asp-for="DataViolazione" class="control-label"></label>
+                <input asp-for="DataViolazione" class="form-control" />
+                <span asp-validation-for="DataViolazione" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IndirizzoViolazione" class="control-label"></label>
+                <input asp-for="IndirizzoViolazione" class="form-control" />
+                <span asp-validation-for="IndirizzoViolazione" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nominativo_Agente" class="control-label"></label>
+                <input asp-for="Nominativo_Agente" class="form-control" />
+                <span asp-validation-for="Nominativo_Agente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataTrascrizioneVerbale" class="control-label"></label>
+                <input asp-for="DataTrascrizioneVerbale" class="form-control" />
+                <span asp-validation-for="DataTrascrizioneVerbale" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdAnagrafica" class="control-label"></label>
+                <input asp-for="IdAnagrafica" class="form-control" />
+                <span asp-validation-for="IdAnagrafica" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdViolazioneVerbale" class="control-label"></label>
+                <input asp-for="IdViolazioneVerbale" class="form-control" />
+                <span asp-validation-for="IdViolazioneVerbale" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crea" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
