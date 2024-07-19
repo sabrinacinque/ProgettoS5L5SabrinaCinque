@@ -6,7 +6,7 @@
 
 <h1>Anagrafica</h1>
 
-<a asp-action="Create" class="btn btn-primary">Aggiungi</a>
+<a asp-action="Create" class="btn btn-success">Aggiungi</a>
 
 <table class="table">
     <thead>
@@ -33,7 +33,7 @@
                 <td>@item.Cap</td>
                 <td>@item.Cod_Fisc</td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.IdAnagrafica" class="btn btn-primary">Modifica</a>
+                    <a asp-action="Edit" asp-route-id="@item.IdAnagrafica" class="btn btn-warning">Modifica</a>
                 </td>
             </tr>
         }
