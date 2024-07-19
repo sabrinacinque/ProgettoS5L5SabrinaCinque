@@ -37,15 +37,15 @@ CREATE TABLE Verbali (
 --popoliamo le tabelle con record casuali
 INSERT INTO [dbo].[Tipo_Violazioni] (Descrizione, Importo, DecurtamentoPunti)
 VALUES 
-('Eccesso di velocità', 150.00, 3),
+('Eccesso di velocità', 150.00, 11),
 ('Sosta vietata', 50.00, 0),
 ('Guida senza cinture', 80.00, 2),
-('Uso del cellulare', 100.00, 2),
+('Uso del cellulare', 100.00, 12),
 ('Passaggio con semaforo rosso', 200.00, 6),
 ('Mancata precedenza', 75.00, 1),
-('Guida contromano', 120.00, 4),
+('Guida contromano', 120.00, 14),
 ('Mancato rispetto delle distanze', 60.00, 1),
-('Guida in stato di ebbrezza', 300.00, 10),
+('Guida in stato di ebbrezza', 300.00, 13),
 ('Assenza di assicurazione', 250.00, 5);
 
 
@@ -107,13 +107,18 @@ VALUES
 ('2023-05-30', 'Via Trieste, 2', 'Agente Marrone', '2023-05-31', 9, 10);
 
 
+--ho creato la tabella con due users per fare le autorizzazioni:
+--il comandante vede tutto , il subordinato vede solo la pagina di report
+CREATE TABLE Users (
+    Id INT PRIMARY KEY IDENTITY,
+    Username NVARCHAR(100) NOT NULL,
+    Password NVARCHAR(100) NOT NULL,
+    Role NVARCHAR(100) NOT NULL
+);
 
-USE PoliziaMunicipale;
+INSERT INTO Users (Username, Password, Role)
+VALUES 
+    ('comandante', 'password', 'Comandante'),
+    ('subordinato', 'password', 'Subordinato');
 
-
-SELECT a.Cognome, a.Nome, SUM(tv.DecurtamentoPunti) AS TotalePuntiDecurtati
-FROM Verbali v
-JOIN Anagrafiche a ON v.IdAnagrafica = a.IdAnagrafica
-JOIN Tipo_Violazioni tv ON v.IdViolazioneVerbale = tv.IdViolazione
-GROUP BY a.Cognome, a.Nome;
 

@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProgettoS5L5SabrinaCinque.DAO;
 using ProgettoS5L5SabrinaCinque.Models;
 
 namespace ProgettoS5L5SabrinaCinque.Controllers
 {
+    [Authorize(Policy = "ComandantePolicy")]
+
     public class VerbaleController : Controller
     {
         private readonly IVerbaleDao _verbaleDao;

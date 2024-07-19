@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using ProgettoS5L5SabrinaCinque.Models;
+using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using ProgettoS5L5SabrinaCinque.Models;
 
 namespace ProgettoS5L5SabrinaCinque.Controllers
 {
@@ -14,11 +15,6 @@ namespace ProgettoS5L5SabrinaCinque.Controllers
         }
 
         public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
         {
             return View();
         }

@@ -1,4 +1,6 @@
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.Extensions.Configuration;
+using ProgettoS5L5SabrinaCinque.Services;
 using ProgettoS5L5SabrinaCinque.DAO;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,10 +8,26 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-// Configurazione della stringa di connessione
-var connectionString = builder.Configuration.GetConnectionString("PoliziaMunicipale");
+// Configurazione dell'autenticazione
+builder.Services
+    .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(opt =>
+    {
+        opt.LoginPath = "/Account/Login";
+    });
 
-// Registrazione dei DAO e dei servizi
+// Configurazione delle policy di autorizzazione
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("ComandantePolicy", policy => policy.RequireRole("Comandante"));
+    options.AddPolicy("SubordinatoPolicy", policy => policy.RequireRole("Comandante","Subordinato"));
+});
+
+// Configurazione del servizio di gestione delle autenticazioni
+builder.Services.AddScoped<IAuthService, AuthService>();
+
+// Registrazione dei DAO con stringa di connessione
+var connectionString = builder.Configuration.GetConnectionString("PoliziaMunicipale");
 builder.Services.AddScoped<IVerbaleDao>(provider => new VerbaleDao(connectionString));
 builder.Services.AddScoped<IAnagraficaDao>(provider => new AnagraficaDao(connectionString));
 builder.Services.AddScoped<ITipoViolazioneDao>(provider => new TipoViolazioneDao(connectionString));
@@ -25,9 +43,8 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
