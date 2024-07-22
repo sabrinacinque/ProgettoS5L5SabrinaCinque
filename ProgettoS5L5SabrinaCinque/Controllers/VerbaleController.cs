@@ -38,7 +38,6 @@ namespace ProgettoS5L5SabrinaCinque.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Create(Verbale verbale)
         {
             if (ModelState.IsValid)
@@ -60,7 +59,6 @@ namespace ProgettoS5L5SabrinaCinque.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Verbale verbale)
         {
             if (id != verbale.IdVerbale)
