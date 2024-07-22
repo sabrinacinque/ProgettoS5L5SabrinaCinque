@@ -28,7 +28,6 @@ namespace ProgettoS5L5SabrinaCinque.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Create(TipoViolazione violazione)
         {
             if (ModelState.IsValid)
@@ -50,7 +49,6 @@ namespace ProgettoS5L5SabrinaCinque.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Edit(TipoViolazione violazione)
         {
             if (ModelState.IsValid)
