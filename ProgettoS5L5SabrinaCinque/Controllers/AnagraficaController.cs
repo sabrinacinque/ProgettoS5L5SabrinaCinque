@@ -29,7 +29,7 @@ namespace ProgettoS5L5SabrinaCinque.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+    
         public IActionResult Create(Anagrafica anagrafica)
         {
             if (ModelState.IsValid)
@@ -51,7 +51,6 @@ namespace ProgettoS5L5SabrinaCinque.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public IActionResult Edit(Anagrafica anagrafica)
         {
             if (ModelState.IsValid)
